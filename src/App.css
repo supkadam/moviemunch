@@ -1,0 +1,68 @@
+.main{
+  width: 100vw;
+  height: 100vh;
+}
+
+.first{
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  background-color: rgb(17, 1, 1);
+  padding: 0 20px;
+  position:fixed;
+  z-index: 1000;
+}
+
+#watchlist-btn{
+  height: 45px;
+  width: fit-content;
+  padding: 8px;
+  background-color: rgb(172, 5, 5);
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+.second{
+  display: flex;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 15px;
+  column-gap: 10px;
+  justify-content: space-around;
+} 
+
+#movie{
+  border-radius: 10px;
+  background-color: rgba(184, 190, 195, 0.803);
+  color: rgba(236, 11, 26, 0.858);
+  padding-top: 5px;
+  width: 220px;
+  height: 250px;
+  row-gap: 6px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 3px 3px 8px black, 5px 5px 10px rgb(205, 190, 190);
+}
+
+#watchlist{
+  display: flex;
+  align-items: center;
+}
+
+#para{
+  font-weight: 600;
+}
+
+#watchlist-image{
+  cursor: pointer;
+}
