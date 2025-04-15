@@ -56,23 +56,45 @@ export default function App(){
   ]);
 
   const[watchlaterCount, setWatchlaterCount] = useState(0);
+  const[selected, setSelected] = useState([]);
+  const[cssName, setCssName] = useState('selected')
+  const[id, setId] = useState('')
+  const[watchlist, setWatchList] = useState('watchlist-image')
+
   const addtoWatchList = (index) => {
+
     if(movies[index].watchlist == '/add.png'){
       setWatchlaterCount(watchlaterCount + 1);
       movies[index].watchlist = "/remove.png"
+      setMovies([...movies]);
+      setSelected([...selected, movies[index]]);
     }else{
       setWatchlaterCount(watchlaterCount - 1);
       movies[index].watchlist = "/add.png"
+      setMovies([...movies]);
+
+      for(let i=0; i<selected.length;i++){
+        if(selected[i].title == movies[index].title){
+          selected.splice(i,1)
+          setSelected([...selected])
+        }
+      }
     }
     
+  }
 
+  const showMovies = () =>{
+    setCssName('visible')
+    setWatchList('not-allowed')
+    setId('main')
+    console.log(selected)
   }
   return(
     <>
-      <div className='main'>
+      <div className='main' id={id}>
         <div className='first'>
-          <img src='/movie.png' width='120'/>
-          <button id='watchlist-btn'>Watch Later {watchlaterCount}</button>
+          <img src='/newlogo.png' width='120'/>
+          <button id='watchlist-btn' onClick={()=>{showMovies()}}>Watch Later {watchlaterCount}</button>
         </div>
         <br/>
         <br/><br/>
@@ -84,7 +106,7 @@ export default function App(){
                   <div id="watchlist">
                     <p id="para">{item.title}</p>
                     <img src={item.watchlist}
-                    id="watchlist-image" 
+                    id={watchlist}
                     width="25" onClick={()=>{addtoWatchList(index)}}/>
                 </div>
               </div>
@@ -92,6 +114,26 @@ export default function App(){
           )}
           
             
+        </div>
+
+        <div className={cssName}>
+            <img 
+            src="/close.png" 
+            width="30" 
+            id="close-btn"
+            onClick={()=>{
+              setCssName('selected')
+              setId('')
+              setWatchList('watchlist-image')
+            }}
+            />
+
+            {selected.map((item,index)=>
+            <div key={index} id="s-movies"> 
+              <img src={item.image} width="25"/>
+              <h3>{item.title}</h3>
+            </div>
+            )}
         </div>
 
       </div>
