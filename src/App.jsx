@@ -53,13 +53,39 @@ export default function App(){
       image:"/movies/holland.png",
       watchlist: "/add.png"
     },
+    {
+      title: "Drop",
+      image:"/movies/drop.png",
+      watchlist: "/add.png"
+    },
+    {
+      title: "The Alto Knights",
+      image:"/movies/the-alto-knights.png",
+      watchlist: "/add.png"
+    },
+    {
+      title: "Paddington In Peru",
+      image:"/movies/paddington-in-peru.png",
+      watchlist: "/add.png"
+    },
+    {
+      title: "The Last Showgirl",
+      image:"/movies/the-last-showgirl.png",
+      watchlist: "/add.png"
+    },
+    {
+      title: "One of Them Days",
+      image:"/movies/one-of-them-days.png",
+      watchlist: "/add.png"
+    },
   ]);
 
   const[watchlaterCount, setWatchlaterCount] = useState(0);
   const[selected, setSelected] = useState([]);
-  const[cssName, setCssName] = useState('selected')
-  const[id, setId] = useState('')
-  const[watchlist, setWatchList] = useState('watchlist-image')
+  const[cssName, setCssName] = useState('selected');
+  const[id, setId] = useState('');
+  const[mainClass, setMainClass] = useState('main');
+  const[watchlist, setWatchList] = useState('watchlist-image');
 
   const addtoWatchList = (index) => {
 
@@ -84,14 +110,16 @@ export default function App(){
   }
 
   const showMovies = () =>{
-    setCssName('visible')
-    setWatchList('not-allowed')
-    setId('main')
-    console.log(selected)
+    setMainClass('mainSecondary');
+    setCssName('visible');
+    setWatchList('not-allowed');
+    setId('newmain');
+    
+    console.log(selected);
   }
   return(
     <>
-      <div className='main' id={id}>
+      <div className={mainClass} id={id}>
         <div className='first'>
           <img src='/newlogo.png' width='120'/>
           <button id='watchlist-btn' onClick={()=>{showMovies()}}>Watch Later {watchlaterCount}</button>
@@ -122,6 +150,7 @@ export default function App(){
             width="30" 
             id="close-btn"
             onClick={()=>{
+              setMainClass('main');
               setCssName('selected')
               setId('')
               setWatchList('watchlist-image')
